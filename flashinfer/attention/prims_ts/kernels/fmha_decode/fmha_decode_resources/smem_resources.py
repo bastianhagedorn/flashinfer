@@ -1767,7 +1767,7 @@ class SmemPageOffsetsKvResource(DecodeGenResourceBase):
                 self.page_ids_per_stage
             ) + local_tile_idx * Int32(pages_per_tile)
         elif cutlass.const_expr(cfg.runtime_page_window):
-            offset = self.consumer_work_stage * Int32(32) + local_tile_idx * Int32(
+            offset = consumer_work_stage(self) * Int32(32) + local_tile_idx * Int32(
                 pages_per_tile
             )
         elif cutlass.const_expr(
@@ -1811,7 +1811,7 @@ class SmemPageOffsetsKvResource(DecodeGenResourceBase):
                 self.page_ids_per_stage
             ) + local_tile_idx * Int32(pages_per_tile)
         elif cutlass.const_expr(cfg.runtime_page_window):
-            offset = self.consumer_work_stage * Int32(32) + local_tile_idx * Int32(
+            offset = consumer_work_stage(self) * Int32(32) + local_tile_idx * Int32(
                 pages_per_tile
             )
         elif cutlass.const_expr(
